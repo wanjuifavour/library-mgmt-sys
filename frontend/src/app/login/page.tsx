@@ -15,6 +15,7 @@ export default function Login() {
         try {
             const data = await loginUser(email, password)
             setToken(data.token)
+            localStorage.setItem('username', data.user.username)
             router.push("/dashboard")
         } catch (error) {
             console.error("Login failed:", error)
@@ -30,7 +31,7 @@ export default function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
-                    className="mb-4 w-full p-2 border rounded"
+                    className="mb-4 w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100"
                     required
                 />
                 <input
@@ -38,10 +39,10 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
-                    className="mb-4 w-full p-2 border rounded"
+                    className="mb-4 w-full p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100"
                     required
                 />
-                <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
                     Login
                 </button>
             </form>

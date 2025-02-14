@@ -5,9 +5,8 @@ import type {
   SchemaInference,
   XataRecord,
 } from "@xata.io/client";
-import * as dotenv from 'dotenv';
-
-dotenv.config();
+import dotenv from 'dotenv'
+dotenv.config()
 
 const tables = [
   {
@@ -28,6 +27,46 @@ const tables = [
       },
     },
     columns: [
+      {
+        name: "author",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "details",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "imageURL",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "name",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "price",
+        type: "int",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
       {
         name: "xata_createdat",
         type: "datetime",
@@ -157,10 +196,9 @@ export type DatabaseSchema = {
 const DatabaseClient = buildClient();
 
 const defaultOptions = {
-  databaseURL:
-    "https://Favour-Wanjui-s-workspace-t8uadi.us-east-1.xata.sh/db/Kenya-One",
+  databaseURL: process.env.XATA_DATABASE_URL,
     apiKey: process.env.XATA_API_KEY,
-    branch: "main"
+  branch: process.env.XATA_BRANCH
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {
